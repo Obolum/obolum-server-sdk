@@ -11,7 +11,7 @@
 ## Init Config
 
 ```java
-PayermaxClient client=DefaultPayermaxClient.getInstance();
+ObolumClient client=DefaultObolumClient.getInstance();
         client.setEnv(Env.UAT);
 ```
 
@@ -19,7 +19,7 @@ PayermaxClient client=DefaultPayermaxClient.getInstance();
 
 ```java
         String merchantPrivateKey="get your private key from testGenKeyPair()";
-        String payermaxPublicKey="get obolum public key from dashboard";
+        String obolumPublicKey="get obolum public key from dashboard";
         String merchantNo="get merchantNo from dashboard";
         String appId="get appId from dashboard";
 
@@ -29,7 +29,7 @@ PayermaxClient client=DefaultPayermaxClient.getInstance();
         
         MerchantConfig merchantConfig=MerchantConfig.Builder.builder()
         .merchantPrivateKey(merchantPrivateKey)
-        .payermaxPublicKey(payermaxPublicKey)
+        .obolumPublicKey(obolumPublicKey)
         .merchantNo(merchantNo)
         .appId(appId)
         //In ISV mode, spMerchantNo and merchantAuthToken is required
@@ -44,7 +44,7 @@ PayermaxClient client=DefaultPayermaxClient.getInstance();
 ```java
 Map<String, String> keyPair=RsaUtils.createKeyPair();
         String merchantPrivateKey=keyPair.get(RsaUtils.PRIVATE_KEY_FILE);
-        String payermaxPublicKey="get obolum public key from dashboard";
+        String obolumPublicKey="get obolum public key from dashboard";
         String merchantNo="the other merchant no";
         String appId="get appId from dashboard";
 
@@ -54,7 +54,7 @@ Map<String, String> keyPair=RsaUtils.createKeyPair();
         
         MerchantConfig merchantConfig=MerchantConfig.Builder.builder()
         .merchantPrivateKey(merchantPrivateKey)
-        .payermaxPublicKey(payermaxPublicKey)
+        .obolumPublicKey(obolumPublicKey)
         .merchantNo(merchantNo)
         .appId(appId)
         //In ISV mode, spMerchantNo and merchantAuthToken is required

@@ -5,27 +5,27 @@ import com.obolum.sdk.enums.ErrorCodeEnum;
 /**
  * @author zhu.q
  */
-public class PayermaxException extends RuntimeException {
+public class ObolumException extends RuntimeException {
     private ErrorCodeEnum errorCode;
 
-    public PayermaxException() {
+    public ObolumException() {
         super();
     }
 
-    public PayermaxException(String msg, Throwable cause) {
+    public ObolumException(String msg, Throwable cause) {
         super(msg, cause);
     }
 
-    public PayermaxException(Throwable cause) {
+    public ObolumException(Throwable cause) {
         super(cause);
     }
 
-    public PayermaxException(ErrorCodeEnum code, String msg) {
+    public ObolumException(ErrorCodeEnum code, String msg) {
         super(code + ":" + msg);
         this.errorCode = code;
     }
 
-    public PayermaxException(ErrorCodeEnum codeEnum) {
+    public ObolumException(ErrorCodeEnum codeEnum) {
         super(codeEnum.getCode() + ":" + codeEnum.getMsg());
         this.errorCode = codeEnum;
     }

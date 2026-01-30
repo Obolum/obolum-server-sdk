@@ -1,6 +1,6 @@
 package com.obolum.sdk.config;
 
-import com.obolum.sdk.exceptions.PayermaxException;
+import com.obolum.sdk.exceptions.ObolumException;
 import com.obolum.sdk.enums.ErrorCodeEnum;
 import org.apache.commons.lang3.StringUtils;
 
@@ -24,23 +24,23 @@ public class GlobalMerchantConfig {
 
     public static void addConfig(MerchantConfig config) {
         if (StringUtils.isEmpty(config.getMerchantNo())) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantNo is empty");
+            throw new ObolumException(ErrorCodeEnum.CONFIG_INVALID, "merchantNo is empty");
         }
         if (StringUtils.isEmpty(config.getAppId())) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "appId is empty");
+            throw new ObolumException(ErrorCodeEnum.CONFIG_INVALID, "appId is empty");
         }
         if (StringUtils.isEmpty(config.getMerchantPrivateKey())) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantPrivateKey is empty");
+            throw new ObolumException(ErrorCodeEnum.CONFIG_INVALID, "merchantPrivateKey is empty");
         }
-        if (StringUtils.isEmpty(config.getPayermaxPublicKey())) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "payermaxPublicKey is empty");
+        if (StringUtils.isEmpty(config.getObolumPublicKey())) {
+            throw new ObolumException(ErrorCodeEnum.CONFIG_INVALID, "obolumPublicKey is empty");
         }
         MERCHANT_CONFIG_MAP.put(config.getMerchantNo(), config);
     }
 
     public static MerchantConfig getDefaultConfig() {
         if (DEFAULT_MERCHANT_CONFIG == null) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "default merchant config is null");
+            throw new ObolumException(ErrorCodeEnum.CONFIG_INVALID, "default merchant config is null");
         }
         return DEFAULT_MERCHANT_CONFIG;
     }
@@ -48,12 +48,12 @@ public class GlobalMerchantConfig {
     public static MerchantConfig getConfig(String merchantNo) {
 
         if (StringUtils.isEmpty(merchantNo)) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID, "merchantNo is empty");
+            throw new ObolumException(ErrorCodeEnum.PARAMS_INVALID, "merchantNo is empty");
         }
 
         MerchantConfig merchantConfig = MERCHANT_CONFIG_MAP.get(merchantNo);
         if (merchantConfig == null) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID,
+            throw new ObolumException(ErrorCodeEnum.PARAMS_INVALID,
                     "can not find merchant config by merchantNo:" + merchantNo);
         }
         return merchantConfig;

@@ -12,7 +12,7 @@ public class ApplyTokenResponse implements Serializable {
     private String secureUrl;
 
     /**
-     * PayerMax流水号
+     * Obolum流水号
      */
     private String tradeToken;
 

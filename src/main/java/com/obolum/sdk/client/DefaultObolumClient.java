@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.obolum.sdk.domain.GatewayRequest;
 import com.obolum.sdk.domain.GatewayResult;
-import com.obolum.sdk.exceptions.PayermaxException;
+import com.obolum.sdk.exceptions.ObolumException;
 import com.obolum.sdk.config.GlobalMerchantConfig;
 import com.obolum.sdk.config.MerchantConfig;
 import com.obolum.sdk.enums.Env;
@@ -124,7 +124,7 @@ public class DefaultObolumClient implements ObolumClient {
             Response response = httpClient.newCall(request).execute();
             ResponseBody responseBody = response.body();
             if (responseBody == null) {
-                throw new PayermaxException(ErrorCodeEnum.INVOKE_ERROR);
+                throw new ObolumException(ErrorCodeEnum.INVOKE_ERROR);
             }
             String respBody = responseBody.string();
             GatewayResult<?> gatewayResult = JSON.parseObject(respBody, GatewayResult.class);
@@ -132,10 +132,10 @@ public class DefaultObolumClient implements ObolumClient {
                 checkSign(config, respBody, response.header(HEADER_SIGN));
             }
             return respBody;
-        } catch (PayermaxException e) {
+        } catch (ObolumException e) {
             throw e;
         } catch (Exception e) {
-            throw new PayermaxException(e);
+            throw new ObolumException(e);
         }
     }
 
@@ -147,7 +147,7 @@ public class DefaultObolumClient implements ObolumClient {
         if (!config.isNeedCheckSign()) {
             return true;
         }
-        return RsaUtils.verify(body, sign, config.getPayermaxPublicKey(), RsaUtils.CHAR_SET);
+        return RsaUtils.verify(body, sign, config.getObolumPublicKey(), RsaUtils.CHAR_SET);
     }
 
     private String buildReqString(MerchantConfig config, Object busData) {
@@ -171,8 +171,8 @@ public class DefaultObolumClient implements ObolumClient {
     }
 
     private void checkSign(MerchantConfig config, String str, String sign) {
-        if (config.isNeedCheckSign() && !RsaUtils.verify(str, sign, config.getPayermaxPublicKey(), RsaUtils.CHAR_SET)) {
-            throw new PayermaxException(ErrorCodeEnum.CHECK_SIGN_ERROR);
+        if (config.isNeedCheckSign() && !RsaUtils.verify(str, sign, config.getObolumPublicKey(), RsaUtils.CHAR_SET)) {
+            throw new ObolumException(ErrorCodeEnum.CHECK_SIGN_ERROR);
         }
     }
 

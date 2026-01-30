@@ -35,7 +35,7 @@ public class SdkTest {
         client.setEnv(Env.UAT);
         // init default MerchantConfig
 
-        String payermaxPublicKey = "get obolum public key from dashboard";
+        String obolumPublicKey = "get obolum public key from dashboard";
         String merchantPrivateKey = "get your private key from testGenKeyPair()";
         String merchantNo = "get merchantNo from dashboard";
         String appId = "get appId from dashboard";
@@ -46,7 +46,7 @@ public class SdkTest {
 
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
-                .payermaxPublicKey(payermaxPublicKey)
+                .obolumPublicKey(obolumPublicKey)
                 .merchantNo(merchantNo)
                 .appId(appId)
                 //In ISV mode, spMerchantNo and merchantAuthToken is required
@@ -112,7 +112,7 @@ public class SdkTest {
 
         Map<String, String> keyPair = RsaUtils.createKeyPair();
         String merchantPrivateKey = keyPair.get(RsaUtils.PRIVATE_KEY_NAME);
-        String payermaxPublicKey = "get obolum public key from dashboard";
+        String obolumPublicKey = "get obolum public key from dashboard";
         String merchantNo = "the other merchant no";
         String appId = "get appId from dashboard";
         //In ISV mode, spMerchantNo and merchantAuthToken is required
@@ -120,7 +120,7 @@ public class SdkTest {
         String merchantAuthToken = "get merchantAuthToken from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
-                .payermaxPublicKey(payermaxPublicKey)
+                .obolumPublicKey(obolumPublicKey)
                 .merchantNo(merchantNo)
                 .appId(appId)
                 //In ISV mode, spMerchantNo and merchantAuthToken is required

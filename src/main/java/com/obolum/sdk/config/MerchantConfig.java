@@ -7,7 +7,7 @@ public class MerchantConfig {
 
     private String merchantPrivateKey;
 
-    private String payermaxPublicKey;
+    private String obolumPublicKey;
 
     private String appId;
 
@@ -61,12 +61,12 @@ public class MerchantConfig {
         this.merchantPrivateKey = merchantPrivateKey;
     }
 
-    public String getPayermaxPublicKey() {
-        return payermaxPublicKey;
+    public String getObolumPublicKey() {
+        return obolumPublicKey;
     }
 
-    public void setPayermaxPublicKey(String payermaxPublicKey) {
-        this.payermaxPublicKey = payermaxPublicKey;
+    public void setObolumPublicKey(String obolumPublicKey) {
+        this.obolumPublicKey = obolumPublicKey;
     }
 
     public String getSpMerchantNo() {
@@ -87,7 +87,7 @@ public class MerchantConfig {
 
     public static final class Builder {
         private String merchantPrivateKey;
-        private String payermaxPublicKey;
+        private String obolumPublicKey;
         private String appId;
         private String merchantNo;
         private String spMerchantNo;
@@ -106,8 +106,8 @@ public class MerchantConfig {
             return this;
         }
 
-        public Builder payermaxPublicKey(String payermaxPublicKey) {
-            this.payermaxPublicKey = payermaxPublicKey;
+        public Builder obolumPublicKey(String obolumPublicKey) {
+            this.obolumPublicKey = obolumPublicKey;
             return this;
         }
 
@@ -137,15 +137,15 @@ public class MerchantConfig {
         }
 
         public MerchantConfig build() {
-            MerchantConfig payermaxMerchantConfig = new MerchantConfig();
-            payermaxMerchantConfig.setMerchantPrivateKey(merchantPrivateKey);
-            payermaxMerchantConfig.setPayermaxPublicKey(payermaxPublicKey);
-            payermaxMerchantConfig.setAppId(appId);
-            payermaxMerchantConfig.setMerchantNo(merchantNo);
-            payermaxMerchantConfig.setSpMerchantNo(spMerchantNo);
-            payermaxMerchantConfig.setMerchantAuthToken(merchantAuthToken);
-            payermaxMerchantConfig.setNeedCheckSign(checkSign);
-            return payermaxMerchantConfig;
+            MerchantConfig merchantConfig = new MerchantConfig();
+            merchantConfig.setMerchantPrivateKey(merchantPrivateKey);
+            merchantConfig.setObolumPublicKey(obolumPublicKey);
+            merchantConfig.setAppId(appId);
+            merchantConfig.setMerchantNo(merchantNo);
+            merchantConfig.setSpMerchantNo(spMerchantNo);
+            merchantConfig.setMerchantAuthToken(merchantAuthToken);
+            merchantConfig.setNeedCheckSign(checkSign);
+            return merchantConfig;
         }
     }
 }

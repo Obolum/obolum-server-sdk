@@ -1,7 +1,7 @@
 package com.obolum.sdk.utils;
 
 
-import com.obolum.sdk.exceptions.PayermaxException;
+import com.obolum.sdk.exceptions.ObolumException;
 
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -46,7 +46,7 @@ public class RsaUtils {
             byte[] signed = signature.sign();
             return Base64.getEncoder().encodeToString(signed);
         } catch (Exception e) {
-            throw new PayermaxException(e);
+            throw new ObolumException(e);
         }
     }
 
@@ -69,7 +69,7 @@ public class RsaUtils {
             signature.update(body.getBytes(charSet));
             return signature.verify(Base64.getDecoder().decode(sign));
         } catch (Exception e) {
-            throw new PayermaxException(e);
+            throw new ObolumException(e);
         }
     }
 

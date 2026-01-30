@@ -542,9 +542,9 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          * 动态3ds
          * do3DS：发起3ds支付，不区分大小写
          * no3DS：发起非3ds支付，不区分大小写
-         * 商户需要联系PayerMax的商务开通动态3ds，
+         * 商户需要联系Obolum的商务开通动态3ds，
          * 开通后则根据商户传入的dynamic3DS字段判断该笔支付请求是否要发起3ds。
-         * 未传或传入其他值，由PayerMax判断是否发起3ds
+         * 未传或传入其他值，由Obolum判断是否发起3ds
          */
         private String dynamic3DS;
 
