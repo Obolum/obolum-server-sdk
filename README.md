@@ -2,7 +2,7 @@
 
 ```xml
 <dependency>
-  <groupId>com.obolum</groupId>
+  <groupId>com.payermax</groupId>
   <artifactId>obolum-server-sdk</artifactId>
   <version>1.0.12</version>
 </dependency>
