@@ -291,6 +291,11 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         private AccountInfo accountInfo;
 
         /**
+         * 收款方网络-取值范围见文档
+         */
+        private String cryptoNetwork;
+
+        /**
          * 银行信息
          */
         private BankInfo bankInfo;
@@ -315,6 +320,14 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         private String birthDate;
 
         private String email;
+
+        public String getCryptoNetwork() {
+            return cryptoNetwork;
+        }
+
+        public void setCryptoNetwork(String cryptoNetwork) {
+            this.cryptoNetwork = cryptoNetwork;
+        }
 
         public String getPaymentMethod() {
             return paymentMethod;
